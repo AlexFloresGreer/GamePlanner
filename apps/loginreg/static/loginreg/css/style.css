@@ -1,0 +1,10 @@
+.error {
+	color: red;
+}
+.form {
+	width: 400px;
+	background-color: WhiteSmoke;
+	padding: 30px;
+	margin: 20px;
+	display: inline-block;
+}
