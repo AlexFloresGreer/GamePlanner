@@ -3,11 +3,55 @@
     <head>
         <meta charset="utf-8">
         <title>Join a Game</title>
-        {% load staticfilesv%}
+        {% load staticfiles%}
         <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css'}">
         <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js'}"></script>
     <body>
-		<h1>Welcome to Game Planner, {{request.session.user}}</h1>
-		<h3>Time join a game!!!</h3>
+		<h1>Your Game Has Been Created!</h1>
+		<h3>Your Games</h3>
+        <table>
+            <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Location</th>
+                  <th># of Players</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                    <tr>
+                        <td>{{game.game}}</td>
+                        <td>{{game.location}} </td>
+                        <td>{{game.players}} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+        <h3>Other Friend's Games</h3>
+        <table>
+            <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Location</th>
+                  <th>Friend</th>
+                  <th># of Players</th>
+                  <th>Join Game</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                    <tr>
+                        <td>{{game.game}}</td>
+                        <td>{{game.location}} </td>
+                        <td>{{game.friend}} </td>
+                        <td>{{game.players}} </td>
+                        <td><a href='{{trip.id}}'>Join</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action='' method = 'post'>  
+            <button type='submit'>Go Back</button>
+        </form>
     </body>
 </html>
