@@ -2,13 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Game Info</title>
-
+    <title>Welcome</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
   </head>
   <body>
-   <h3>My Landing Page</h3>
-   	  <p>Buttons need colors!!!</p>
-      <button type="button" name="join"><a href="{% url 'join' %}">Join</a></button>
-      <button type="button" name="create"><a href="{% url 'start' %}">Start</a></button>
+    <button type="button" name="join"><a href="{% url 'join' %}">Join</a></button>
+    <button type="button" name="create"><a href="{% url 'start' %}">Start</a></button>
   </body>
 </html>

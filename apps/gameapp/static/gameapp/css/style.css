@@ -1,0 +1,20 @@
+.error {
+	color: #ffd740;
+	margin-left: 20px;
+	line-height: 10px;
+	font-weight: bold;
+	font-size: .75em;
+}
+.form {
+	margin: 20px;
+}
+.form form{
+	margin: 20px;
+}
+body {
+	background-color: #00bfa5;
+}
+.header {
+	text-align: center;
+	font-weight: bold;
+}
