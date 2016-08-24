@@ -7,21 +7,28 @@
         <link rel="stylesheet" type="text/css" href="{% static 'loginreg/css/materialize.min.css' %}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'loginreg/css/style.css' %}">
-        <script type="text/javascript" src="{% static 'loginreg/js/materialize.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'loginreg/js/jquery-3.1.0.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'loginreg/js/materialize.min.js' %}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                Materialize.updateTextFields();
+            });
+        </script>
     </head>
     <body>
         <div class="header">
-            <h2 class="amber-text text-accent-3">Activity Planner</h2>
+            <h2 class="amber-text text-accent-3">Sports Planner</h2>
         </div>
-        <div class="valign-wrapper">
-            <div class="card-panel grey lighten-3 form">
-                <form class="col s6" action="{% url 'register' %}" method="post">
+        <div class="valign-wrapper row">
+            <div class="col s3"></div>
+            <div class="card-panel grey lighten-3 form col s4">
+                <form action="{% url 'register' %}" method="post">
                 {% csrf_token %}
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="first_name" type="text" name="first_name">
-                            <label for="first_name" class="active">First Name</label>
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" name="first_name">
+                            <label class="active" for="icon_prefix">First Name</label>
                         </div>
                         <div class="input-field col s6">
                             <input id="last_name" type="text" name="last_name">
@@ -29,17 +36,15 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
                             <input id="email" type="text" name="email">
                             <label for="email" class="active">Email</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="birthday" type="date" name="birthday">
-                            <label for="birthday" class="active">Birthday</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
+                            <i class="material-icons prefix">lock</i>
                             <input id="password" type="password" name="password">
                             <label for="password" class="active">Password</label>
                         </div>
@@ -53,17 +58,19 @@
                     </button>
                 </form>
             </div> 
-            <div class="card-panel grey lighten-3 form">
-                <form class="col s6" action="/login" method="post" class="form">
+            <div class="card-panel grey lighten-3 form col s3">
+                <form action="/login" method="post">
                     {% csrf_token %}
                     <div class="row">
                         <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
                             <input id="email" type="text" name="email">
                             <label for="email" class="active">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
                             <input id="password" type="password" name="password">
                             <label for="password" class="active">Password</label>
                         </div>
@@ -72,11 +79,18 @@
                     <i class="material-icons right">send</i>
                 </form>
             </div>
+            <div class="col s3"></div>
         </div>
-        {% if messages %}
-            {% for message in messages %}
-                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-            {% endfor %}
-        {% endif %}
+        <div class="valign-wrapper">
+            <div class="row">
+                <div class="col s12">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p{% if message.tags %} class="{{ message.tags }} center-align"{% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </body>
 </html>

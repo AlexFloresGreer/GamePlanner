@@ -15,7 +15,7 @@ def start(request):
     return render(request, 'gameapp/start.html')
 
 #Create & validations
-def create(request):
+def start_game(request):
     return redirect('/dashboard')
 
 def gameinfo(request):

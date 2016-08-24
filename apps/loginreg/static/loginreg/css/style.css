@@ -6,9 +6,10 @@
 	font-size: .75em;
 }
 .form {
-	padding: 30px;
 	margin: 20px;
-	height: 400px;
+}
+.form form{
+	margin: 20px;
 }
 body {
 	background-color: #00bfa5;

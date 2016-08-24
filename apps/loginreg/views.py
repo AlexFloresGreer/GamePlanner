@@ -20,16 +20,13 @@ def register(request):
 
     if not validationManager().validateName(request, request.POST['first_name'], request.POST['last_name']):
         error = True
-#convert bday
-    if not validationManager().validateBirthday(request, request.POST['birthday']):
-        error = True
 
     if not validationManager().validatePassword(request, request.POST['password'], request.POST['password_confirmation']):
         error = True
 
     if not error:
         hashed = bcrypt.hashpw(request.POST['password'].encode('utf-8'), bcrypt.gensalt())
-        User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'],birthday=request.POST['birthday'], password=hashed)
+        User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=hashed)
         messages.success(request, 'You have successfully been registered!')
         return redirect(reverse('gamelanding'))
     else:
@@ -42,6 +39,3 @@ def login(request):
         return redirect(reverse('gamelanding'))
     else:
         return redirect('/')
-
-# def success(request, name):
-#     return render(request, 'gameapp/gamelanding.html', {'name':name})

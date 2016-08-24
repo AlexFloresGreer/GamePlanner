@@ -32,22 +32,6 @@ class validationManager(models.Manager):
             no_error = False
         return no_error
 
-    def validateBirthday(self, request, birthday):
-        no_error = True
-        # bd = request.POST['birthday']
-        # bday = datetime.datetime.strptime(bd, "%Y-%m-%d")
-        now = strftime('%Y-%m-%d')
-        if request.POST['birthday'] == "":
-            messages.error(request, 'Birthday can not be blank')
-            no_error = False
-        print now
-        print request.POST['birthday']
-        print now
-        if request.POST['birthday'] > now:
-            messages.error(request, 'Birthday can not be in the future')
-            no_error = False
-        return no_error
-
     def validatePassword(self, request, password, confirm_password):
         no_error = True
         if len(password) < 8:
@@ -73,11 +57,9 @@ class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField()
-    birthday = models.DateField(null=True)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     emailManager = validationManager()
     objects = models.Manager()
 
