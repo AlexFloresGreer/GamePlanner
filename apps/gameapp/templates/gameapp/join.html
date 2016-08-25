@@ -11,8 +11,9 @@
         <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
     <body id="join_wrapper">
       <div class="header z-depth-2">
-        <h2 class="lime-text text-accent-3">Your Games</h2>
+        <h2 class="white-text">Game Planner</h2>
       </div>
+      <h4 class="lime-text text-accent-3 center-align">Your Games</h4>
       <div class="row">
         <div class="col s3"></div>
         <div class="col s6">
@@ -39,9 +40,7 @@
           </div>
           <div class="col s3"></div>
         </div> 
-        <div class="header">
-            <h2 class="lime-text text-accent-3">Other Friend's Games</h2>
-        </div> 
+          <h4 class="lime-text text-accent-3 center-align">Other Friend's Games</h4>
           <div class="row">
           <div class="col s3"></div>
           <div class="col s6">  
@@ -62,7 +61,7 @@
                         <td>{{game.location}} </td>
                         <td>{{game.friend}} </td>
                         <td>{{game.players}} </td>
-                        <td><a href='{{trip.id}}'>Join</a></td>
+                        <td><a href='{{game.id}}'>Join</a></td>
                       </tr>
                     {% endfor %}
                     </tbody>
@@ -71,6 +70,15 @@
             </div> 
             <div class="col s3"></div> 
         </div>  
-        <a href="{% url 'landing' %}" class="waves-effect waves-light btn-large green accent-4">Go Back</a>
+        <div class="row">
+          <div class="col s3"></div>
+          <div class="col s3">
+           <a href="{% url 'landing' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4">Go Back</a>
+          </div>
+          <div class="col s3">
+            <a href="{% url 'logout' %}" class=" welcomebtn waves-effect waves-light btn-large green accent-4">Log Off</a>
+          </div>
+          <div class="col s3"></div>
+        </div>
     </body>
 </html>

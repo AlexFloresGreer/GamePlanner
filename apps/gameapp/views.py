@@ -10,8 +10,10 @@ def landing(request):
     return render(request, 'gameapp/landing.html')
 
 def join(request):
-    return render(request, 'gameapp/join.html')
-
+	context = {
+		'games':Game.objects.all()
+		}
+	return render(request, 'gameapp/join.html', context)
 def start(request):
     return render(request, 'gameapp/start.html')
 

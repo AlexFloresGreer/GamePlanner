@@ -1,82 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Create Game</title>
-        {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
-        <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                Materialize.updateTextFields();
-                $('select').material_select();
-            });
-        </script>
-    </head>
-    <body id="start_wrapper">
-      <div class="header z-depth-2">
-        <h2 class="lime-text text-accent-3">Start a Game</h2>
+  <head>
+      <meta charset="utf-8">
+      <title>Start a Game</title>
+      {% load staticfiles %}
+      <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
+      <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
+      <script type="text/javascript">
+          $(document).ready(function() {
+              Materialize.updateTextFields();
+              $('select').material_select();
+          });
+      </script>
+  </head>
+  <body id="start_wrapper">
+    <div class="header z-depth-2">
+      <h2 class="white-text">Let's get started!</h2>
+    </div>
+    <div class="row">
+        <div class="col s3"></div>
+          <div class="card-panel grey lighten-3 form col s6">
+            <form action="/start_game" method="post">
+            {% csrf_token %}
+              <div class="input-field col s12 m12">
+              <h6 class="green-text text-accent-4">Select a Game and Location</h6>
+                <select class="icons">
+                  <option value="baseball" src="{% static "gameapp/baseball.jpg" %}" class="circle">Baseball - Bellevue Park</option>
+                  <option value="basketball" data-icon="images/office.jpg" class="circle">Basketball - Surrey Downs Park</option>
+                  <option value="football" data-icon="images/yuna.jpg" class="circle">Football - Surrey Downs Park</option>
+                  <option value="frisbee" data-icon="images/yuna.jpg" class="circle">Frisbee - Bellevue Park</option>
+                  <option value="pokemon_go" data-icon="images/yuna.jpg" class="circle">Pokemon Go - Bellevue Park</option>
+                  <option value="rugby" data-icon="images/yuna.jpg" class="circle">Rugby - Surrey Downs Park</option>
+                  <option value="running" data-icon="images/yuna.jpg" class="circle">Running - Bellevue Botanical Garden</option>
+                  <option value="soccer" data-icon="images/yuna.jpg" class="circle">Soccer - Surrey Downs Park</option>
+                  <option value="volleyball" data-icon="images/yuna.jpg" class="circle">Volleyball - Surrey Downs Park</option>
+                  <option value="walking" data-icon="images/yuna.jpg" class="circle">Walking - Mercer Slough Nature Park</option>
+                </select>
+              </div>
+              <div class="input-field col s12">
+              <h6 class="green-text text-accent-4">Select a Number of Players</h6>
+                  <select>
+                    <option value="1">1 player</option>
+                    <option value="2">2 players</option>
+                    <option value="3">3 players</option>
+                    <option value="4">4 players</option>
+                    <option value="5">5 players</option>
+                    <option value="6">6 players</option>
+                    <option value="7">7 players</option>
+                    <option value="8">8 players</option>
+                    <option value="9">9 players</option>
+                    <option value="10">10 players</option>
+                    <option value="11">11 players</option>
+                    <option value="12">12 players</option>
+                    <option value="13">13 players</option>
+                    <option value="14">15 players</option>
+                    <option value="15">15 players</option>
+                  </select>
+                </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <h6 class="green-text text-accent-4">Select a Date</h6>
+                  <input type="date" name="date" value="date">
+                </div>
+                <div class="input-field col s6">
+                  <h6 class="green-text text-accent-4">Select a Time</h6>
+                  <input type="time" name="time" value="time">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s1"></div>
+                <div class="col s3">
+                 <a href="{% url 'landing' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4">Go Back</a>
+                </div>
+                <div class="col s4">
+                 <a href="{% url 'start_game' %}" type="submit" class="welcomebtn waves-effect waves-light btn-large green accent-4">Start<i class="material-icons right">play_circle_filled</i></a>
+                </div>
+                <div class="col s3">
+                  <a href="{% url 'logout' %}" class=" welcomebtn waves-effect waves-light btn-large green accent-4">Log Off</a>
+                </div>
+                <div class="col s1"></div>
+                </form>
+              </div>
+          </div>
+        </div>
       </div>
-      <h4 class="lime-text text-accent-3">Let's get started!</h4>
-      <h6 class="amber-text text-accent-3">Select a Game</h6>
-      <div class="input-field col s6 m6">
-        <select class="icons">
-          <option value="baseball" src="{% static "gameapp/baseball.jpg" %}" class="circle">Baseball - Bellevue Park</option>
-          <option value="basketball" data-icon="images/office.jpg" class="circle">Basketball - Surrey Downs Park</option>
-          <option value="football" data-icon="images/yuna.jpg" class="circle">Football - Surrey Downs Park</option>
-          <option value="frisbee" data-icon="images/yuna.jpg" class="circle">Frisbee - Bellevue Park</option>
-          <option value="pokemon_go" data-icon="images/yuna.jpg" class="circle">Pokemon Go - Bellevue Park</option>
-          <option value="rugby" data-icon="images/yuna.jpg" class="circle">Rugby - Surrey Downs Park</option>
-          <option value="running" data-icon="images/yuna.jpg" class="circle">Running - Bellevue Botanical Garden</option>
-          <option value="soccer" data-icon="images/yuna.jpg" class="circle">Soccer - Surrey Downs Park</option>
-          <option value="volleyball" data-icon="images/yuna.jpg" class="circle">Volleyball - Surrey Downs Park</option>
-          <option value="walking" data-icon="images/yuna.jpg" class="circle">Walking - Mercer Slough Nature Park</option>
-        </select>
-      </div>
-      <div class="header">
-        <h6 class="amber-text text-accent-3">Select Number of Players</h6>
-      </div>
-      <div class="input-field col s6">
-          <select>
-            <option value="1">1 player</option>
-            <option value="2">2 players</option>
-            <option value="3">3 players</option>
-            <option value="4">4 players</option>
-            <option value="5">5 players</option>
-            <option value="6">6 players</option>
-            <option value="7">7 players</option>
-            <option value="8">8 players</option>
-            <option value="9">9 players</option>
-            <option value="10">10 players</option>
-            <option value="11">11 players</option>
-            <option value="12">12 players</option>
-            <option value="13">13 players</option>
-            <option value="14">15 players</option>
-            <option value="15">15 players</option>
-          </select>
-        </div>
-        <div class="header">
-          <h6 class="amber-text text-accent-3">Select a Date</h6>
-        </div>
-        <div class="input-field col s6">
-          <input type="date" name="date" value="date">
-        </div>
-        <div class="header">
-          <h6 class="amber-text text-accent-3">Select a Time</h6>
-        </div>
-        <div class="input-field col s6">
-          <input type="time" name="time" value="time">
-        </div>
-
-        <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Start your Game
-        <i class="material-icons right">play_circle_filled</i>
-
-        <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Go Back
-        <i class="material-icons right">play_circle_filled</i>
-
-
   </body>
 </html>

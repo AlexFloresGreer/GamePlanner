@@ -46,8 +46,8 @@ class validationManager(models.Manager):
         try:
             user = User.objects.get(email=email)
             if bcrypt.hashpw(password.encode('utf-8'), user.password.encode('utf-8')) == user.password:
-                messages.success(request, "You've been logged in!")
-                return (True, user.first_name)
+                messages.success(request, "Welcome!")
+                return (True, user)
         except User.DoesNotExist:
             messages.error(request, "Invalid email")
             return False

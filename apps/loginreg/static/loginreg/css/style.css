@@ -19,6 +19,8 @@ body {
 .header {
 	text-align: center;
 	padding: 10px;
+	background-color: #00c853;
+	opacity: 0.75;
 }
 .welcomebtn {
 	margin: 20px;

@@ -26,16 +26,20 @@ def register(request):
 
     if not error:
         hashed = bcrypt.hashpw(request.POST['password'].encode('utf-8'), bcrypt.gensalt())
-        User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=hashed)
+        user = User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=hashed)
         messages.success(request, 'You have successfully been registered!')
+        request.session['user']=user.id
         return redirect(reverse('landing'))
     else:
         return redirect('/')
 
 def login(request):
     user = validationManager().validateLogin(request, request.POST['email'], request.POST['password'])
-    print user
     if user:
+        request.session['user']=user[1].id
         return redirect(reverse('landing'))
     else:
         return redirect('/')
+def logout(request):
+    del request.session['user']
+    return redirect('/')

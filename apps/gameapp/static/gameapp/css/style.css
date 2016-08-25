@@ -13,9 +13,10 @@
 }
 .header {
 	text-align: center;
-	font-weight: bold;
 	margin-bottom: 50px;
 	padding: 10px;
+	background-color: #00c853;
+	opacity: 0.75;
 }
 #landing_wrapper {
 	background: url("../images/shoe50.jpg") no-repeat;

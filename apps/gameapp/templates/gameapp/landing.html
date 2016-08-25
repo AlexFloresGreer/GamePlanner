@@ -12,7 +12,7 @@
   </head>
   <body id="landing_wrapper">
     <div class="header z-depth-2">
-      <h2 class="lime-text text-accent-3">Sports Planner</h2>
+      <h2 class="white-text">Sports Planner</h2>
     </div>
     <div class="row">
       <div class="col s3"></div>
@@ -26,25 +26,14 @@
     </div>
     <div class="row">
       <div class="col s3"></div>
-      <div class="col s6 m3">
+      <div class="col s12 m6">
         <div class="card mycard grey lighten-3">
           <div class="card-content green-text text-darken-3">
-            <span class="card-title"><h5>How to Join a Game</h5></span>
-            <p>The button above and the link below will take you to a page where you can select a game or other physical activity you want to others to join in with.</p>
+            <span class="card-title"><h5>Use Sport Planner to Connect with Others!</h5></span>
+            <p>The links will take you to a pages where you can select a game or other physical activity you want to others to join you with or you want to join!.</p>
           </div>
           <div class="card-action">
-            <a href="{% url 'start' %}" class="orange-text text-accent-4">Join</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s6 m3">
-        <div class="card mycard grey lighten-3">
-          <div class="card-content green-text text-darken-3">
-            <span class="card-title"><h5>How to Start a Game</h5></span>
-            <p>The button above and the link below will take you to a page where you can select a game or other physical activity you want to others to join in with.</p>
-          </div>
-          <div class="card-action">
-            <a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a>
+            <a href="{% url 'join' %}" class="orange-text text-accent-4">Join</a><a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a><a href="{% url 'logout' %}" class="orange-text text-accent-4">Log Off</a>
           </div>
         </div>
       </div>
