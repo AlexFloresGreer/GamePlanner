@@ -4,52 +4,76 @@
         <meta charset="utf-8">
         <title>Join a Game</title>
         {% load staticfiles%}
-        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css'}">
-        <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js'}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
+        <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
     <body>
-		<h1>Your Game Has Been Created!</h1>
-		<h3>Your Games</h3>
-        <table>
-            <thead>
-                <tr>
-                  <th>Activity</th>
-                  <th>Location</th>
-                  <th># of Players</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for game in games %}
-                    <tr>
+        <div class="header">
+            <h2 class="amber-text text-accent-3">Your Game Has Been Created!</h2>
+        </div>
+        <div class="header">
+            <h2 class="amber-text text-accent-3">Your Games</h2>
+        </div>
+        <div class="row">
+          <div class="col s3"></div>
+          <div class="col s6">
+            <div class="striped">
+                <table>
+                    <thead>
+                      <tr>
+                          <th>Activity</th>
+                          <th>Location</th>
+                          <th># of Players</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for game in games %}
+                      <tr>
                         <td>{{game.game}}</td>
-                        <td>{{game.location}} </td>
-                        <td>{{game.players}} </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table> 
-        <h3>Other Friend's Games</h3>
-        <table>
-            <thead>
-                <tr>
-                  <th>Activity</th>
-                  <th>Location</th>
-                  <th>Friend</th>
-                  <th># of Players</th>
-                  <th>Join Game</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for game in games %}
-                    <tr>
+                        <td>{{game.location}}</td>
+                        <td>{{game.players}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="col s3"></div>
+        </div> 
+        <div class="header">
+            <h2 class="amber-text text-accent-3">Other Friend's Games</h2>
+        </div> 
+          <div class="row">
+          <div class="col s3"></div>
+          <div class="col s6">  
+            <div class="striped">
+                <table>
+                    <thead>
+                      <tr>
+                          <th>Activity</th>
+                          <th>Location</th>
+                          <th>Friend</th>
+                          <th># of Players</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for game in games %}
+                      <tr>
                         <td>{{game.game}}</td>
                         <td>{{game.location}} </td>
                         <td>{{game.friend}} </td>
                         <td>{{game.players}} </td>
                         <td><a href='{{trip.id}}'>Join</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div> 
+            </div> 
+            <div class="col s3"></div> 
+        </div>  
         <form action='' method = 'post'>  
             <button type='submit'>Go Back</button>
         </form>
