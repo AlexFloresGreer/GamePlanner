@@ -7,23 +7,23 @@
 }
 .form {
 	margin: 20px;
-	opacity: 0.75;
 }
 .form form{
 	margin: 20px;
 }
-body {
-	background: url("../images/dawn-nature-sunset-trees-large.jpg") no-repeat;
-	background-size:100%;
-}
 .header {
 	text-align: center;
 	font-weight: bold;
+	margin-bottom: 50px;
 }
-<<<<<<< HEAD
-=======
+#landing_wrapper {
+	background: url("../images/shoe50.jpg") no-repeat;
+	background-size:100%;
+}
 .welcomebtn {
-	margin: 20px;
-	height: 500px;
+	width: 100%;
 }
->>>>>>> 06263030529cb830d9c181454f9ac2ab91b05367
+.mycard {
+	opacity: 0.75;
+	width: 100%;
+}
