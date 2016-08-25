@@ -10,8 +10,45 @@
     <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
   </head>
-  <body>
-    <button type="button" name="join"><a href="{% url 'join' %}">Join</a></button>
-    <button type="button" name="create"><a href="{% url 'start' %}">Start</a></button>
+  <body id="landing_wrapper">
+    <div class="header">
+      <h2 class="orange-text text-accent-2">Sports Planner</h2>
+    </div>
+    <div class="row">
+      <div class="col s3"></div>
+      <div class="col s3">
+        <a href="{% url 'join' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4"><i class="material-icons right">group_work</i>Join</a>
+      </div> 
+      <div class="col s3">
+        <a href="{% url 'start' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4"><i class="material-icons right">play_circle_filled</i>Start</a>
+      </div>
+      <div class="col s3"></div>
+    </div>
+    <div class="row">
+      <div class="col s3"></div>
+      <div class="col s6 m3">
+        <div class="card mycard grey lighten-3">
+          <div class="card-content green-text text-darken-3">
+            <span class="card-title"><h5>How to Join a Game</h5></span>
+            <p>The button above and the link below will take you to a page where you can select a game or other physical activity you want to others to join in with.</p>
+          </div>
+          <div class="card-action">
+            <a href="{% url 'start' %}" class="orange-text text-accent-4">Join</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m3">
+        <div class="card mycard grey lighten-3">
+          <div class="card-content green-text text-darken-3">
+            <span class="card-title"><h5>How to Start a Game</h5></span>
+            <p>The button above and the link below will take you to a page where you can select a game or other physical activity you want to others to join in with.</p>
+          </div>
+          <div class="card-action">
+            <a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s3"></div>
+    </div>
   </body>
 </html>
