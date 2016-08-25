@@ -8,17 +8,20 @@ from ..loginreg.models import User
 
 class GameManager(models.Manager):
 	def create_game(self, data):
+		errors =[]
 		if data['date'] == "":
-			return(False, "Please Enter a Date")
+			errors.append("Please Enter a Date")
 		now = datetime.now()
 		date_test = datetime.strptime(data['date'], '%Y-%m-%d')
 		if date_test < now:
-			errors.append ("Date Must be in the Future")
+			errors.append("Date Must be in the Future")
 		if data['time'] == "":
-			errors.append ("Please Enter a Time") 
-		else:
+			errors.append("Please Enter a Time") 
+		if not errors:
+			game = Game.objects.create(players=data['players'], date=data['date'], time=data['time'] )
 			return(True, game)
-
+		else:
+			return(False,errors)
 # this table has what we are wanting to preasign as admin for any new game
 class GameType(models.Model):
 	game = models.CharField(max_length=100)
@@ -38,3 +41,10 @@ class Game(models.Model):
 	updated_at = models.DateTimeField(auto_now = True)
 	gameManager = GameManager()
 	objects = models.Manager()
+
+game_types = ['Basketball', 'Pokemon GO', 'Walking' ]
+for game_type in game_types:
+	if not GameType.objects.filter(game=game_type):
+		GameType.objects.create(game=game_type,location='bellevue park')
+
+
