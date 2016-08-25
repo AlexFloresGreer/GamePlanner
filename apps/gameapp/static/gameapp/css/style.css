@@ -11,10 +11,19 @@
 .form form{
 	margin: 20px;
 }
-body {
-	background-color: #00bfa5;
-}
 .header {
 	text-align: center;
 	font-weight: bold;
+	margin-bottom: 50px;
+}
+#landing_wrapper {
+	background: url("../images/shoe50.jpg") no-repeat;
+	background-size:100%;
+}
+.welcomebtn {
+	width: 100%;
+}
+.mycard {
+	opacity: 0.75;
+	width: 100%;
 }

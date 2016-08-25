@@ -7,14 +7,20 @@
 }
 .form {
 	margin: 20px;
+	opacity: 0.75;
 }
 .form form{
 	margin: 20px;
 }
 body {
-	background-color: #00bfa5;
+	background: url("../images/dawn-nature-sunset-trees-large.jpg") no-repeat;
+	background-size:100%;
 }
 .header {
 	text-align: center;
 	font-weight: bold;
+}
+.welcomebtn {
+	margin: 20px;
+	height: 500px;
 }
