@@ -1,9 +1,9 @@
 .error {
-	color: #ffd740;
+	color: #ff9100;
 	margin-left: 20px;
 	line-height: 10px;
 	font-weight: bold;
-	font-size: .75em;
+	font-size: .85em;
 }
 .form {
 	margin: 20px;
@@ -13,17 +13,14 @@
 	margin: 20px;
 }
 body {
-	background: url("../images/dawn-nature-sunset-trees-large.jpg") no-repeat;
+	background: url("../images/dawn-nature-sunset-trees-large50.jpg") no-repeat;
 	background-size:100%;
 }
 .header {
 	text-align: center;
-	font-weight: bold;
+	padding: 10px;
 }
-<<<<<<< HEAD
-=======
 .welcomebtn {
 	margin: 20px;
 	height: 500px;
 }
->>>>>>> 06263030529cb830d9c181454f9ac2ab91b05367

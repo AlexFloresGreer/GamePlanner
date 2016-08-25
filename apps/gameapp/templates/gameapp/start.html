@@ -16,17 +16,12 @@
             });
         </script>
     </head>
-    <body>
-      <div class="header">
-        <h2 class="amber-text text-accent-3">Welcome to Game Planner!</h2>
+    <body id="start_wrapper">
+      <div class="header z-depth-2">
+        <h2 class="lime-text text-accent-3">Start a Game</h2>
       </div>
-      <div class="header">
-        <h4 class="amber-text text-accent-3">Let's get started!</h4>
-      </div>
-
-      <div class="header">
-        <h6 class="amber-text text-accent-3">Select a Game</h6>
-      </div>
+      <h4 class="lime-text text-accent-3">Let's get started!</h4>
+      <h6 class="amber-text text-accent-3">Select a Game</h6>
       <div class="input-field col s6 m6">
         <select class="icons">
           <option value="baseball" src="{% static "gameapp/baseball.jpg" %}" class="circle">Baseball - Bellevue Park</option>
@@ -76,10 +71,8 @@
           <input type="time" name="time" value="time">
         </div>
 
-
         <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Start your Game
         <i class="material-icons right">play_circle_filled</i>
-
 
         <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Go Back
         <i class="material-icons right">play_circle_filled</i>

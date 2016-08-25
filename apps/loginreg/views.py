@@ -28,7 +28,7 @@ def register(request):
         hashed = bcrypt.hashpw(request.POST['password'].encode('utf-8'), bcrypt.gensalt())
         User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=hashed)
         messages.success(request, 'You have successfully been registered!')
-        return redirect(reverse('gamelanding'))
+        return redirect(reverse('landing'))
     else:
         return redirect('/')
 
@@ -36,6 +36,6 @@ def login(request):
     user = validationManager().validateLogin(request, request.POST['email'], request.POST['password'])
     print user
     if user:
-        return redirect(reverse('gamelanding'))
+        return redirect(reverse('landing'))
     else:
         return redirect('/')

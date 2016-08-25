@@ -15,8 +15,21 @@
 	text-align: center;
 	font-weight: bold;
 	margin-bottom: 50px;
+	padding: 10px;
 }
 #landing_wrapper {
+	background: url("../images/shoe50.jpg") no-repeat;
+	background-size:100%;
+}
+#join_wrapper {
+	background: url("../images/shoe50.jpg") no-repeat;
+	background-size:100%;
+}
+#start_wrapper {
+	background: url("../images/shoe50.jpg") no-repeat;
+	background-size:100%;
+}
+#join_wrapper {
 	background: url("../images/shoe50.jpg") no-repeat;
 	background-size:100%;
 }
@@ -26,4 +39,8 @@
 .mycard {
 	opacity: 0.75;
 	width: 100%;
+}
+#map {
+	width: 100%;
+	height: 400px;
 }
