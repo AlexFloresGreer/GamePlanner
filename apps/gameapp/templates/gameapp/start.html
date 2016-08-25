@@ -38,8 +38,11 @@
             {% csrf_token %}
               <div class="input-field col s12 m12">
               <h6 class="green-text text-accent-4">Select a Game and Location</h6>
-                <select class="icons">
-                  <option value="baseball" src="{% static "gameapp/baseball.jpg" %}" class="circle">Baseball - Bellevue Park</option>
+                <select name="gametype" class="icons">
+                  {% for gametype in gametypes %}
+                    <option value='{{gametype.id}}'>{{gametype.game}} @ {{gametype.location}}</option>
+                  {% endfor %}
+                  <!-- <option value="baseball" src="{% static "gameapp/baseball.jpg" %}" class="circle">Baseball - Bellevue Park</option>
                   <option value="basketball" data-icon="images/office.jpg" class="circle">Basketball - Surrey Downs Park</option>
                   <option value="football" data-icon="images/yuna.jpg" class="circle">Football - Surrey Downs Park</option>
                   <option value="frisbee" data-icon="images/yuna.jpg" class="circle">Frisbee - Bellevue Park</option>
@@ -48,7 +51,7 @@
                   <option value="running" data-icon="images/yuna.jpg" class="circle">Running - Bellevue Botanical Garden</option>
                   <option value="soccer" data-icon="images/yuna.jpg" class="circle">Soccer - Surrey Downs Park</option>
                   <option value="volleyball" data-icon="images/yuna.jpg" class="circle">Volleyball - Surrey Downs Park</option>
-                  <option value="walking" data-icon="images/yuna.jpg" class="circle">Walking - Mercer Slough Nature Park</option>
+                  <option value="walking" data-icon="images/yuna.jpg" class="circle">Walking - Mercer Slough Nature Park</option> -->
                 </select>
               </div>
               <div class="input-field col s12">

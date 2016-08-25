@@ -15,10 +15,14 @@ def join(request):
 		}
 	return render(request, 'gameapp/join.html', context)
 def start(request):
-    return render(request, 'gameapp/start.html')
+	context = {
+		'gametypes':GameType.objects.all()
+		}
+	return render(request, 'gameapp/start.html',context)
 
 #Create & validations
 def start_game(request):
+
     return redirect('/join')
 
 def info(request):
