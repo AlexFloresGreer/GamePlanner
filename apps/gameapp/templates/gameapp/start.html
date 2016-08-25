@@ -13,6 +13,17 @@
           $(document).ready(function() {
               Materialize.updateTextFields();
               $('select').material_select();
+              $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+              });
+              $('.timepicker').pickatime({
+                default: 'now',
+                twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
+                donetext: 'OK',
+                autoclose: false,
+                vibrate: true // vibrate the device when dragging clock hand
+              });
           });
       </script>
   </head>
@@ -63,11 +74,11 @@
               <div class="row">
                 <div class="input-field col s6">
                   <h6 class="green-text text-accent-4">Select a Date</h6>
-                  <input type="date" name="date" value="date">
+                  <input type="date" class="datepicker" name="date" value="date">
                 </div>
                 <div class="input-field col s6">
                   <h6 class="green-text text-accent-4">Select a Time</h6>
-                  <input type="time" name="time" value="time">
+                  <input id="timepicker_ampm_dark" class="timepicker" type="time" name="time">
                 </div>
               </div>
               <div class="row">
