@@ -11,15 +11,12 @@ class GameManager(models.Manager):
 		errors =[]
 		if data['date'] == "":
 			errors.append("Please Enter a Date")
-		now = datetime.now()
-		date_test = datetime.strptime(data['date'], '%Y-%m-%d')
-		if date_test < now:
+		if data['date'] != "" and data['date'] < strftime('%Y-%m-%d'):
 			errors.append("Date Must be in the Future")
 		if data['time'] == "":
 			errors.append("Please Enter a Time")
 		if not errors:
-			game = Game.objects.create(players=data['players'], date=data['date'], time=data['time'] )
-			return(True, game)
+			return(True, data)
 		else:
 			return(False,errors)
 # this table has what we are wanting to preasign as admin for any new game

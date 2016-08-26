@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    <head>
     <meta charset="utf-8">
     <title>Game Info</title>
     {% load staticfiles %}
@@ -9,53 +9,74 @@
     <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
     <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'gameapp/js/materialize.min.js' %}"></script>
-  </head>
-  <body id="info_wrapper">
-    <div class="header z-depth-2">
-      <h2 class="white-text">Game Info</h2>
-    </div>
-<!-- Name: Mercer Slough Nature Park, Activity: Walking -->
-  {% if game == 'Walking' %}
-    <iframe
-      width="400"
-      height="400"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
-      &q=Mercer+Slough+Nature+Park,Bellevue+WA" allowfullscreen>
-    </iframe>
-  {% endif %}
+    </head>
+    <body id="info_wrapper">
+        <div class="header z-depth-2">
+            <p class="white-text">GAME INFO</p>
+        </div>
+        <div class="row">
+            <div class="col s4"></div>
+            <div class="col s4">
+            <!-- Name: Mercer Slough Nature Park, Activity: Walking -->
+            {% if game == 'Walking' %}
+            <iframe
+                width="400"
+                height="400"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
+                &q=Mercer+Slough+Nature+Park,Bellevue+WA" allowfullscreen>
+            </iframe>
+            {% endif %}
 
-<!-- Name: Bellevue Park,  Activity: PokemonGo & Frisbee -->
-  {% if game == 'Pokemon GO' or game == 'Frisbee' %}
-    <iframe
-      width="400"
-      height="400"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
-      &q=Bellevue+Park,Bellevue+WA" allowfullscreen>
-    </iframe>
-    {% endif %}
-<!-- Name: Bellevue Botanical Garden,  Activity: Running -->
-  {% if game == 'Running' %}
-    <iframe
-      width="400"
-      height="400"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
-      &q=Bellevue+Botanical+Garden,Bellevue+WA" allowfullscreen>
-    </iframe>
-    {% endif %}
+            <!-- Name: Bellevue Park,  Activity: PokemonGo & Frisbee -->
+            {% if game == 'Pokemon GO' or game == 'Frisbee' %}
+            <iframe
+                width="400"
+                height="400"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
+                &q=Bellevue+Park,Bellevue+WA" allowfullscreen>
+            </iframe>
+            {% endif %}
+            <!-- Name: Bellevue Botanical Garden,  Activity: Running -->
+            {% if game == 'Running' %}
+            <iframe
+                width="400"
+                height="400"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
+                &q=Bellevue+Botanical+Garden,Bellevue+WA" allowfullscreen>
+            </iframe>
+            {% endif %}
 
-<!-- Name: Surrey Downs Park,  Activity: Baseball, Soccer, Basketball, Volleyball, Football, Rugby -->
-  {% if game == 'Baseball' or game == 'Basketball' or game == 'Football' or game == 'Soccer' or game == 'Rugby' or game == 'Volleyball'%}
-    <iframe
-      width="400"
-      height="400"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
-      &q=Surrey+Downs+Park,Bellevue+WA" allowfullscreen>
-    </iframe>
-    {% endif %}
-
-  </body>
+            <!-- Name: Surrey Downs Park,  Activity: Baseball, Soccer, Basketball, Volleyball, Football, Rugby -->
+            {% if game == 'Baseball' or game == 'Basketball' or game == 'Football' or game == 'Soccer' or game == 'Rugby' or game == 'Volleyball'%}
+            <iframe
+                width="400"
+                height="400"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
+                &q=Surrey+Downs+Park,Bellevue+WA" allowfullscreen>
+            </iframe>
+            {% endif %}
+            </div>
+            <div class="col s4"></div>
+        </div>
+        <div class="row">
+          <div class="col s4"></div>
+          <div class="col s6 m4">
+            <div class="card mycard grey lighten-3">
+              <div class="card-content green-text text-darken-3">
+                <span class="card-title"><h5>{{game}}</h5></span>
+                <p>Where: {{game_info.location}}</p>
+                <!-- <p>When: {{game_info.game.date}}{{game_info.time}}</p> -->
+              </div>
+              <div class="card-action">
+                <a href="{% url 'join' %}" class="orange-text text-accent-4">Join</a><a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a><a href="{% url 'logout' %}" class="orange-text text-accent-4">Log Off</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s4"></div>
+        </div>
+    </body>
 </html>

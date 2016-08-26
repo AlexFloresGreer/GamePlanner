@@ -8,7 +8,7 @@ import datetime
 
 def landing(request):
     return render(request, 'gameapp/landing.html')
-#print to
+
 def start(request):
 	context = {
 		'gametypes':GameType.objects.all()
@@ -16,14 +16,16 @@ def start(request):
 	return render(request, 'gameapp/start.html',context)
 #create game and process request.POST
 def start_game(request):
-    # print "*" *20
-    # print request.POST
-    gametype = GameType.objects.get(id=request.POST['gametype_selection'])
-    gamestarter = User.objects.get(id=request.session['user'])
-    # print "game "*10
-    Game.objects.create(players=request.POST['players'], date=request.POST['date'], time=request.POST['time'], gametype=gametype, game_starter=gamestarter)
-    # print "players "*10
-    return redirect('/join')
+    new_game = Game.gameManager.create_game(request.POST)
+    if new_game[0] == False:
+        for error in new_game[1]:
+            messages.add_message(request, messages.INFO, error)
+        return redirect('/start')
+    else:
+        gametype = GameType.objects.get(id=request.POST['gametype_selection'])
+        gamestarter = User.objects.get(id=request.session['user'])
+        Game.objects.create(players=request.POST['players'], date=request.POST['date'], time=request.POST['time'], gametype=gametype, game_starter=gamestarter)
+        return redirect('/join')
 
 def join(request):
     game_starter = User.objects.get(id=request.session['user'])
@@ -31,9 +33,7 @@ def join(request):
         'games': Game.objects.filter(game_starter__id=request.session['user']),
         'friends':Game.objects.exclude(game_starter__id=request.session['user']).exclude(game_joiner__id=request.session['user']),
         'joiners': Game.objects.filter(game_joiner__id=request.session['user']),
-    }
-    # print context['games'][6].gametype.id
-    # print "gamestype "*10
+        }
     return render(request, 'gameapp/join.html', context)
 
 def join_game(request, id):
@@ -45,8 +45,6 @@ def join_game(request, id):
 def info(request, game):
     context = {
         'game': game,
-
-    }
-    # print context['id']
-    print "id " *20
+        'game_info':GameType.objects.get(game=game)
+        }
     return render(request, 'gameapp/info.html', context)

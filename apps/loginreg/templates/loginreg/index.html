@@ -15,9 +15,9 @@
             });
         </script>
     </head>
-    <body>
+    <body id="main">
         <div class="header z-depth-2">
-            <h2 class="white-text">Sports Planner</h2>
+            <p class="white-text">SPORTS PLANNER</p>
         </div>
         <div class="valign-wrapper row">
             <div class="col s3"></div>
@@ -86,7 +86,7 @@
                 <div class="col s12">
                     {% if messages %}
                         {% for message in messages %}
-                            <p class="error center-align">{{ message }}</p>
+                            <p class="error center-align">{{ message.message }}</p>
                         {% endfor %}
                     {% endif %}
                 </div>
