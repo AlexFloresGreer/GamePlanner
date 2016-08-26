@@ -20,7 +20,7 @@ def start_game(request):
     new_game = Game.gameManager.create_game(request.POST)
     if new_game[0] == False:
         for error in new_game[1]:
-            messages.add_message(request, messages.INFO, error)
+            messages.add_message(request, messages.INFO, error, extra_tags='start')
         return redirect('/start')
     else:
         gametype = GameType.objects.get(id=request.POST['gametype_selection'])

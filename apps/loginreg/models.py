@@ -10,13 +10,13 @@ class validationManager(models.Manager):
     def validateEmail(self, request, email):
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+.[a-zA-Z]*$')
         if not EMAIL_REGEX.match(email):
-            messages.error(request, "Email is not valid")
+            messages.error(request, "Email is not valid", extra_tags='log')
             return False
         else:
             # check if email is already in database
             try:
                 User.objects.get(email=email)
-                messages.error(request, "Email is already in use")
+                messages.error(request, "Email is already in use", extra_tags='log')
                 return False
             except User.DoesNotExist:
                 pass
@@ -25,20 +25,20 @@ class validationManager(models.Manager):
     def validateName(self, request, first_name, last_name):
         no_error = True
         if len(first_name) < 2 or any(char.isdigit() for char in first_name):
-            messages.error(request, 'Frist name must be 2 characters and only letters')
+            messages.error(request, 'Frist name must be 2 characters and only letters', extra_tags='log')
             no_error = False
         if len(last_name) < 2 or any(char.isdigit() for char in last_name):
-            messages.error(request, 'Last name must be 2 characters and only letters')
+            messages.error(request, 'Last name must be 2 characters and only letters', extra_tags='log')
             no_error = False
         return no_error
 
     def validatePassword(self, request, password, confirm_password):
         no_error = True
         if len(password) < 8:
-            messages.error(request, 'Password must be greater than 8 characters')
+            messages.error(request, 'Password must be greater than 8 characters', extra_tags='log')
             no_error = False
         if not password == confirm_password:
-            messages.error(request, 'Password confirmation must match password')
+            messages.error(request, 'Password confirmation must match password', extra_tags='log')
             no_error = False
         return no_error
 
@@ -46,10 +46,10 @@ class validationManager(models.Manager):
         try:
             user = User.objects.get(email=email)
             if bcrypt.hashpw(password.encode('utf-8'), user.password.encode('utf-8')) == user.password:
-                messages.success(request, "Welcome!")
+                messages.success(request, "Welcome!", extra_tags='log')
                 return (True, user)
         except User.DoesNotExist:
-            messages.error(request, "Invalid email")
+            messages.error(request, "Invalid email", extra_tags='log')
             return False
 
 

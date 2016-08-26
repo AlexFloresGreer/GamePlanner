@@ -115,7 +115,9 @@
             <div class="col s12">
                 {% if messages %}
                     {% for message in messages %}
-                        <p class="error center-align">{{ message.message }}</p>
+                        {% if 'start' in message.tags %}
+                            <p class="error center-align">{{ message.message }}</p>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>
