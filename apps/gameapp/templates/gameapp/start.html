@@ -4,7 +4,8 @@
       <meta charset="utf-8">
       <title>Start a Game</title>
       {% load staticfiles %}
-      <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
+      <link rel="stylesheet" href="{% static 'gameapp/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+      <!-- <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/materialize.min.css' %}">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="{% static 'gameapp/css/style.css' %}">
       <script type="text/javascript" src="{% static 'gameapp/js/jquery-3.1.0.min.js' %}"></script>
@@ -25,38 +26,40 @@
                 vibrate: true // vibrate the device when dragging clock hand
               });
           });
-      </script>
+      </script> -->
   </head>
   <body id="start_wrapper">
     <div class="header z-depth-2">
       <h2 class="white-text">Let's get started!</h2>
     </div>
     <div class="row">
-        <div class="col s3"></div>
-          <div class="card-panel grey lighten-3 form col s6">
+      <div class="col s3"></div>
+        <div class="imagecenter">
+         <img src="/static/gameapp/images/football.png">
+         <img src="/static/gameapp/images/soccer.png">
+         <img src="/static/gameapp/images/basketball.png">
+         <img src="/static/gameapp/images/volleyball.png">
+         <img src="/static/gameapp/images/pokemon.png">
+         <img src="/static/gameapp/images/baseball.png">
+         <img src="/static/gameapp/images/frisbee.png">
+         <img src="/static/gameapp/images/running.png">
+         <img src="/static/gameapp/images/rugby.png">
+         <img src="/static/gameapp/images/walking.png">
+        </div>
+      </div>
+    </div>
+
+
             <form action="/start_game" method="post">
             {% csrf_token %}
-              <div class="input-field col s12 m12">
-              <h6 class="green-text text-accent-4">Select a Game and Location</h6>
-                <select name="gametype" class="icons">
-                  {% for gametype in gametypes %}
-                    <option value='{{gametype.id}}'>{{gametype.game}} @ {{gametype.location}}</option>
-                  {% endfor %}
-                  <!-- <option value="baseball" src="{% static "gameapp/baseball.jpg" %}" class="circle">Baseball - Bellevue Park</option>
-                  <option value="basketball" data-icon="images/office.jpg" class="circle">Basketball - Surrey Downs Park</option>
-                  <option value="football" data-icon="images/yuna.jpg" class="circle">Football - Surrey Downs Park</option>
-                  <option value="frisbee" data-icon="images/yuna.jpg" class="circle">Frisbee - Bellevue Park</option>
-                  <option value="pokemon_go" data-icon="images/yuna.jpg" class="circle">Pokemon Go - Bellevue Park</option>
-                  <option value="rugby" data-icon="images/yuna.jpg" class="circle">Rugby - Surrey Downs Park</option>
-                  <option value="running" data-icon="images/yuna.jpg" class="circle">Running - Bellevue Botanical Garden</option>
-                  <option value="soccer" data-icon="images/yuna.jpg" class="circle">Soccer - Surrey Downs Park</option>
-                  <option value="volleyball" data-icon="images/yuna.jpg" class="circle">Volleyball - Surrey Downs Park</option>
-                  <option value="walking" data-icon="images/yuna.jpg" class="circle">Walking - Mercer Slough Nature Park</option> -->
-                </select>
-              </div>
-              <div class="input-field col s12">
-              <h6 class="green-text text-accent-4">Select a Number of Players</h6>
-                  <select>
+              <h6 >Select a Game and Location</h6>
+              <select name="gametype_selection" class="icons">
+                {% for gametype in gametypes %}
+                  <option value='{{gametype.id}}'>{{gametype.game}} @ {{gametype.location}}</option>
+                {% endfor %}
+              </select>
+                <h6>Select a Number of Players</h6>
+                  <select name='players' type='text'>
                     <option value="1">1 player</option>
                     <option value="2">2 players</option>
                     <option value="3">3 players</option>
@@ -72,34 +75,10 @@
                     <option value="13">13 players</option>
                     <option value="14">15 players</option>
                     <option value="15">15 players</option>
-                  </select>
-                </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <h6 class="green-text text-accent-4">Select a Date</h6>
-                  <input type="date" class="datepicker" name="date" value="date">
-                </div>
-                <div class="input-field col s6">
-                  <h6 class="green-text text-accent-4">Select a Time</h6>
-                  <input id="timepicker_ampm_dark" class="timepicker" type="time" name="time">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s1"></div>
-                <div class="col s3">
-                 <a href="{% url 'landing' %}" class="welcomebtn waves-effect waves-light btn-large green accent-4">Go Back</a>
-                </div>
-                <div class="col s4">
-                 <a href="{% url 'start_game' %}" type="submit" class="welcomebtn waves-effect waves-light btn-large green accent-4">Start<i class="material-icons right">play_circle_filled</i></a>
-                </div>
-                <div class="col s3">
-                  <a href="{% url 'logout' %}" class=" welcomebtn waves-effect waves-light btn-large green accent-4">Log Off</a>
-                </div>
-                <div class="col s1"></div>
-                </form>
-              </div>
-          </div>
-        </div>
-      </div>
+                  </select><br>
+                  <input type="date" name="date"><br>
+                  <input type="time" name="time"><br>
+                  <input type="submit" value="Start"><br>
+            </form>
   </body>
 </html>

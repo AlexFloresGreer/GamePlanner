@@ -16,7 +16,7 @@ class GameManager(models.Manager):
 		if date_test < now:
 			errors.append("Date Must be in the Future")
 		if data['time'] == "":
-			errors.append("Please Enter a Time") 
+			errors.append("Please Enter a Time")
 		if not errors:
 			game = Game.objects.create(players=data['players'], date=data['date'], time=data['time'] )
 			return(True, game)
@@ -30,11 +30,12 @@ class GameType(models.Model):
 	updated_at = models.DateTimeField(auto_now = True)
 
 # this table is what the user will use to start (create) a new game
+
 class Game(models.Model):
-	players = models.CharField(max_length=100)	
+	players = models.CharField(max_length=100)
 	date = models.DateField()
 	time = models.TimeField()
-	gametype = models.ForeignKey('GameType', related_name="gamestype")
+	gametype = models.ForeignKey(GameType, related_name="gamestype")
 	game_starter = models.ForeignKey('loginreg.User', related_name="usersstarts")
 	game_joiner = models.ManyToManyField('loginreg.User', related_name="joingame")
 	created_at = models.DateTimeField(auto_now_add = True)
@@ -42,9 +43,21 @@ class Game(models.Model):
 	gameManager = GameManager()
 	objects = models.Manager()
 
-game_types = ['Basketball', 'Pokemon GO', 'Walking' ]
-for game_type in game_types:
+game_types1 = ['Baseball', 'Basketball', 'Football' , 'Soccer', 'Rugby', 'Volleyball']
+game_types2 = ['Frisbee', 'Pokemon GO' ]
+game_types3 = ['Walking']
+game_types4 = ['Running']
+
+
+for game_type in game_types1:
 	if not GameType.objects.filter(game=game_type):
-		GameType.objects.create(game=game_type,location='bellevue park')
-
-
+		GameType.objects.create(game=game_type,location='Surrey Downs Park')
+for game_type in game_types2:
+	if not GameType.objects.filter(game=game_type):
+		GameType.objects.create(game=game_type,location='Bellevue Park')
+for game_type in game_types3:
+	if not GameType.objects.filter(game=game_type):
+		GameType.objects.create(game=game_type,location='Mercer Slough Nature Park')
+for game_type in game_types4:
+	if not GameType.objects.filter(game=game_type):
+		GameType.objects.create(game=game_type,location='Bellevue Botanical Garden')

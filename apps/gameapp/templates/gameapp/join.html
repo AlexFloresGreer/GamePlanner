@@ -29,9 +29,16 @@
                   <tbody>
                   {% for game in games %}
                     <tr>
-                      <td>{{game.game}}</td>
-                      <td>{{game.location}}</td>
+                      <td><a href="/info/{{game.gametype.game}}">{{game.gametype.game}}</a></td>
+                      <td>{{game.gametype.location}}</td>
                       <td>{{game.players}}</td>
+                    </tr>
+                  {% endfor %}
+                  {% for joiner in joiners %}
+                    <tr>
+                      <td><a href="/info/{{joiner.gametype.game}}">{{joiner.gametype.game}}</td>
+                      <td>{{joiner.gametype.location}}</td>
+                      <td>{{joiner.players}}</td>
                     </tr>
                   {% endfor %}
                   </tbody>
@@ -39,11 +46,11 @@
           </div>
           </div>
           <div class="col s3"></div>
-        </div> 
+        </div>
           <h4 class="lime-text text-accent-3 center-align">Other Friend's Games</h4>
           <div class="row">
           <div class="col s3"></div>
-          <div class="col s6">  
+          <div class="col s6">
             <div class="highlight centered">
                 <table class="grey lighten-3 mycard">
                     <thead>
@@ -55,21 +62,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                    {% for game in games %}
+                    {% for friend in friends %}
                       <tr>
-                        <td>{{game.game}}</td>
-                        <td>{{game.location}} </td>
-                        <td>{{game.friend}} </td>
-                        <td>{{game.players}} </td>
-                        <td><a href='{{game.id}}'>Join</a></td>
+                        <td><a href="/info/{{friend.gametype.game}}">{{friend.gametype.game}}</a></td>
+                        <td>{{friend.gametype.location}} </td>
+                        <td>{{friend.game_starter.first_name}} </td>
+                        <td>{{friend.players}} </td>
+                        <td><a href='{{friend.id}}'>Join</a></td>
                       </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-            </div> 
-            </div> 
-            <div class="col s3"></div> 
-        </div>  
+            </div>
+            </div>
+            <div class="col s3"></div>
+        </div>
         <div class="row">
           <div class="col s3"></div>
           <div class="col s3">
