@@ -59,7 +59,7 @@
 	width: 100%;
 }
 .mycard {
-	opacity: 0.75;
+	opacity: 0.9;
 	width: 100%;
 }
 #map {
@@ -89,4 +89,9 @@
 }
 iframe {
 	width: 100%;
+}
+.tablesorter th{
+	margin: 5px;
+	border:2px solid #bdbdbd;
+	color:white;
 }

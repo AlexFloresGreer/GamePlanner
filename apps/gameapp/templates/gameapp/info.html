@@ -26,10 +26,9 @@
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
                 &q=Mercer+Slough+Nature+Park,Bellevue+WA" allowfullscreen>
             </iframe>
-            {% endif %}
 
             <!-- Name: Bellevue Park,  Activity: PokemonGo & Frisbee -->
-            {% if game == 'Pokemon GO' or game == 'Frisbee' %}
+            {% elif game == 'Pokemon GO' or game == 'Frisbee' %}
             <iframe
                 width="400"
                 height="400"
@@ -37,9 +36,8 @@
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
                 &q=Bellevue+Park,Bellevue+WA" allowfullscreen>
             </iframe>
-            {% endif %}
             <!-- Name: Bellevue Botanical Garden,  Activity: Running -->
-            {% if game == 'Running' %}
+            {% elif game == 'Running' %}
             <iframe
                 width="400"
                 height="400"
@@ -47,10 +45,9 @@
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsU_kdW9jHsfhj6qU7aeoPmHfj5mC7gXQ
                 &q=Bellevue+Botanical+Garden,Bellevue+WA" allowfullscreen>
             </iframe>
-            {% endif %}
 
             <!-- Name: Surrey Downs Park,  Activity: Baseball, Soccer, Basketball, Volleyball, Football, Rugby -->
-            {% if game == 'Baseball' or game == 'Basketball' or game == 'Football' or game == 'Soccer' or game == 'Rugby' or game == 'Volleyball'%}
+            {% elif game == 'Baseball' or game == 'Basketball' or game == 'Football' or game == 'Soccer' or game == 'Rugby' or game == 'Volleyball'%}
             <iframe
                 width="400"
                 height="400"
@@ -69,7 +66,7 @@
               <div class="card-content green-text text-darken-3">
                 <span class="card-title"><h5>{{game}}</h5></span>
                 <p>Where: {{game_info.location}}</p>
-                <!-- <p>When: {{game_info.game.date}}{{game_info.time}}</p> -->
+                <p>When: {{game_info.date}}{{game_info.game.time}}</p>
               </div>
               <div class="card-action">
                 <a href="{% url 'join' %}" class="orange-text text-accent-4">Join</a><a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a><a href="{% url 'logout' %}" class="orange-text text-accent-4">Log Off</a>

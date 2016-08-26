@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, HttpRespons
 from django.contrib import messages
 from ..loginreg.models import User
 from .models import GameType, Game, GameManager
+from django.db.models import Count
 import bcrypt
 import datetime
 # from datetime import datetime
@@ -34,6 +35,7 @@ def join(request):
         'friends':Game.objects.exclude(game_starter__id=request.session['user']).exclude(game_joiner__id=request.session['user']),
         'joiners': Game.objects.filter(game_joiner__id=request.session['user']),
         }
+    print context['games']
     return render(request, 'gameapp/join.html', context)
 
 def join_game(request, id):
@@ -42,9 +44,10 @@ def join_game(request, id):
     game.save()
     return redirect('/join')
 
-def info(request, game):
+def info(request, id):
     context = {
         'game': game,
         'game_info':GameType.objects.get(game=game)
         }
+    print context['game_info']
     return render(request, 'gameapp/info.html', context)
