@@ -18,7 +18,7 @@
             <div class="col s4"></div>
             <div class="col s4">
             <!-- Name: Mercer Slough Nature Park, Activity: Walking -->
-            {% if game == 'Walking' %}
+            {% if game.gametype.game == 'Walking' %}
             <iframe
                 width="400"
                 height="400"
@@ -28,7 +28,7 @@
             </iframe>
 
             <!-- Name: Bellevue Park,  Activity: PokemonGo & Frisbee -->
-            {% elif game == 'Pokemon GO' or game == 'Frisbee' %}
+            {% elif game.gametype.game == 'Pokemon GO' or game.gametype.game == 'Frisbee' %}
             <iframe
                 width="400"
                 height="400"
@@ -37,7 +37,7 @@
                 &q=Bellevue+Park,Bellevue+WA" allowfullscreen>
             </iframe>
             <!-- Name: Bellevue Botanical Garden,  Activity: Running -->
-            {% elif game == 'Running' %}
+            {% elif game.gametype.game == 'Running' %}
             <iframe
                 width="400"
                 height="400"
@@ -47,7 +47,7 @@
             </iframe>
 
             <!-- Name: Surrey Downs Park,  Activity: Baseball, Soccer, Basketball, Volleyball, Football, Rugby -->
-            {% elif game == 'Baseball' or game == 'Basketball' or game == 'Football' or game == 'Soccer' or game == 'Rugby' or game == 'Volleyball'%}
+            {% elif game.gametype.game == 'Baseball' or game.gametype.game == 'Basketball' or game.gametype.game == 'Football' or game.gametype.game == 'Soccer' or game.gametype.game == 'Rugby' or game.gametype.game == 'Volleyball'%}
             <iframe
                 width="400"
                 height="400"
@@ -64,9 +64,9 @@
           <div class="col s6 m4">
             <div class="card mycard grey lighten-3">
               <div class="card-content green-text text-darken-3">
-                <span class="card-title"><h5>{{game}}</h5></span>
-                <p>Where: {{game_info.location}}</p>
-                <p>When: {{game_info.date}}{{game_info.game.time}}</p>
+                <span class="card-title"><h5>{{game.gametype.game}}</h5></span>
+                <p>Where: {{game.gametype.location}}</p>
+                <p>When: {{game.date}} @ {{game.time}}</p>
               </div>
               <div class="card-action">
                 <a href="{% url 'join' %}" class="orange-text text-accent-4">Join</a><a href="{% url 'start' %}" class="orange-text text-accent-4">Start</a><a href="{% url 'logout' %}" class="orange-text text-accent-4">Log Off</a>

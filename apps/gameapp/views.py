@@ -46,8 +46,8 @@ def join_game(request, id):
 
 def info(request, id):
     context = {
-        'game': game,
-        'game_info':GameType.objects.get(game=game)
+        'id': id,
+        'game':Game.objects.get(id=id)
         }
-    print context['game_info']
+    print context['game']
     return render(request, 'gameapp/info.html', context)

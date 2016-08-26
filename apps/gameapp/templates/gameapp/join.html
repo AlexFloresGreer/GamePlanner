@@ -38,7 +38,7 @@
                     <tbody>
                     {% for game in games %}
                       <tr>
-                        <td><a href="/info/{{game.gametype.game}}">{{game.gametype.game}}</a></td>
+                        <td><a href="/info/{{game.id}}">{{game.gametype.game}}</a></td>
                         <td>{{game.gametype.location}}</td>
                         <td>{{game.players}}</td>
                         <td>{{game.game_joiner.all.count|add:"1"}}</td>
@@ -46,7 +46,7 @@
                     {% endfor %}
                     {% for joiner in joiners %}
                       <tr>
-                        <td><a href="/info/{{joiner.gametype.game}}">{{joiner.gametype.game}}</td>
+                        <td><a href="/info/{{joiner.id}}">{{joiner.gametype.game}}</td>
                         <td>{{joiner.gametype.location}}</td>
                         <td>{{joiner.players}}</td>
                         <td>{{joiner.game_joiner.all.count|add:"1"}}</td>
@@ -77,7 +77,7 @@
                 <tbody>
                 {% for friend in friends %}
                   <tr>
-                    <td><a href="/info/{{friend.gametype.game}}">{{friend.gametype.game}}</a></td>
+                    <td><a href="/info/{{friend.id}}">{{friend.gametype.game}}</a></td>
                     <td>{{friend.gametype.location}} </td>
                     <td>{{friend.game_starter.first_name}} </td>
                     <td>{{friend.players}} </td>
